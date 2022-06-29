@@ -1,10 +1,13 @@
 package FunctionsInterface;
 
+import java.util.function.BiFunction;
 import java.util.function.Function;
 
 public class _Function {
 
     public static void main(String[] args) {
+
+        // Functions
 
         System.out.println("Num in string: " + numInString.apply(3567565));
         System.out.println("Increment by one: " +incrementByOne.apply(1));
@@ -15,11 +18,17 @@ public class _Function {
                 chainedFunc1.apply(6));
         System.out.println("Increment by one, multiply by ten and then to double: " +
                 chainedFunc2.apply(6));
+
+        // BiFunctions - take two arguments and return one result
+
+        System.out.println("Increment by one and multiply by multiplier" + biFunction1.apply(3,10));
     }
 
     /*
 
-    Explanation:
+    Explanation of Function:
+
+    Functions take 1 argument and return 1 result.
 
     When making a function, the first generic represents the type of the input, and the second represents the type
     of the output.
@@ -63,7 +72,15 @@ public class _Function {
 
     static Function<Integer, Integer> multiplyByTen = number -> number*10;
 
-    static Function<Integer, Integer> chainedFunc1 = incrementByOne.andThen(multiplyByTen);
+    static Function<Integer, Integer> chainedFunc1 = incrementByOne.andThen(multiplyByTen); // (i++)*10
 
-    static Function<Integer, Double> chainedFunc2 = incrementByOne.andThen(multiplyByTen).andThen(intToDouble);
+    static Function<Integer, Double> chainedFunc2 = incrementByOne.andThen(multiplyByTen).andThen(intToDouble); // (i++)*10+0.1456567
+
+    /*
+
+    BiFunctions are essentially functions, except they take two parameters/inputs.
+
+    */
+
+    static BiFunction<Integer, Integer, Integer> biFunction1 = (incremented, multiplier) -> (incremented+1)*multiplier;
 }
